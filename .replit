@@ -1,0 +1,9 @@
+run = "python3 app.py"
+modules = ["python-3.10"]
+
+[packager]
+language = "python3"
+ignoredPaths = [".git"]
+
+[env]
+PYTHONUNBUFFERED = "1"
