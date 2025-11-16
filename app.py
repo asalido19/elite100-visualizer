@@ -454,7 +454,7 @@ if __name__ == '__main__':
     import os
     
     # Detect if running on Replit
-    is_replit = os.getenv('REPLIT_OUTAGE') is not None or os.path.exists('/root/.replit')
+    is_replit = os.getenv('REPL_ID') is not None or os.path.exists('/root/.replit')
     
     if is_replit:
         # Replit: bind to 0.0.0.0 so it's accessible via Replit's proxy

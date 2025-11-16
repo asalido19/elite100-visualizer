@@ -1,5 +1,5 @@
 run = "python3 app.py"
-modules = ["python-3.10"]
+modules = ["web", "python-3.12"]
 
 [packager]
 language = "python3"
@@ -7,3 +7,11 @@ ignoredPaths = [".git"]
 
 [env]
 PYTHONUNBUFFERED = "1"
+
+[nix]
+channel = "stable-25_05"
+packages = ["glibcLocales"]
+
+[[ports]]
+localPort = 8050
+externalPort = 80
