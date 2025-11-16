@@ -88,7 +88,13 @@ app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
 app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
-            html.H1("Elite 100 Visualizer", style={'color': '#FFD700', 'fontWeight': 'bold', 'fontSize': '36px', 'marginTop': '16px', 'marginBottom': '16px'})
+            html.Div([
+                html.H1([
+                    html.Span("ELITE ", style={'color': '#FFD700', 'marginRight': '0px'}),
+                    html.Span("100", style={'color': '#000000', 'WebkitTextStroke': '2px #FFD700', 'marginRight': '12px'}),
+                    html.Span("visualizer", style={'color': '#888888', 'fontSize': '28px', 'fontStyle': 'italic', 'verticalAlign': 'middle'})
+                ], style={'marginTop': '16px', 'marginBottom': '16px', 'textAlign': 'left', 'display': 'flex', 'alignItems': 'center'})
+            ])
         ])
     ]),
     
@@ -144,12 +150,12 @@ app.layout = dbc.Container([
             ], className="mb-3 g-0", style={'alignItems': 'flex-start', 'width': '100%'}),
             
             dbc.Row([
-                dbc.Col([html.Label("Model + Chassis:", className="fw-bold")], width=5, style={'paddingRight': '0'}),
+                dbc.Col([html.Label("Model, Chassis:", className="fw-bold")], width=5, style={'paddingRight': '0'}),
                 dbc.Col([
                     dcc.Input(
                         id='model-chassis-input',
                         type='text',
-                        placeholder='e.g., Civic Type R DC2, Impreza GC8',
+                        placeholder='e.g., Civic Type R, 992.1',
                         style={'color': 'black', 'backgroundColor': 'white', 'width': '100%', 'padding': '8px'},
                         debounce=True
                     )
