@@ -1,0 +1,90 @@
+/* Dash Dropdown Styling - More Aggressive */
+
+/* Main dropdown control */
+.Select-control {
+    background-color: white !important;
+    border-color: #555 !important;
+    color: black !important;
+}
+
+/* Input area */
+.Select-input {
+    color: black !important;
+}
+
+.Select-input input {
+    color: black !important;
+}
+
+/* Selected value display */
+.Select-value-label {
+    color: black !important;
+}
+
+.Select-value {
+    color: black !important;
+}
+
+/* Placeholder text */
+.Select-placeholder {
+    color: #666 !important;
+}
+
+/* Dropdown menu */
+.Select-menu-outer {
+    background-color: white !important;
+    border-color: #555 !important;
+    z-index: 1000 !important;
+}
+
+.Select-menu {
+    background-color: white !important;
+}
+
+/* Individual options in dropdown */
+.Select-option {
+    color: black !important;
+    background-color: white !important;
+    padding: 8px 10px !important;
+}
+
+.Select-option:hover {
+    background-color: #e8e8e8 !important;
+    color: black !important;
+}
+
+.Select-option.is-focused {
+    background-color: #e8e8e8 !important;
+    color: black !important;
+}
+
+.Select-option.is-selected {
+    background-color: #ddd !important;
+    color: black !important;
+}
+
+/* Arrow icon */
+.Select-arrow-zone {
+    background-color: white !important;
+}
+
+.Select-arrow {
+    border-color: black transparent transparent !important;
+}
+
+/* Open state */
+.is-open > .Select-control {
+    border-color: #555 !important;
+    background-color: white !important;
+}
+
+/* Multi-select pills */
+.Select-item {
+    background-color: #007bff !important;
+    color: white !important;
+}
+
+.Select-item-icon {
+    color: white !important;
+}
+
