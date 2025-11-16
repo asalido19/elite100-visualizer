@@ -87,6 +87,26 @@ Preferred communication style: Simple, everyday language.
 - Time parsing abstracted into reusable function
 - Callback decorators keep UI logic separate from business logic
 
+### Deployment Configuration
+
+**Environment Detection**
+- **Production Deployment**: Detected via `REPLIT_DEPLOYMENT=1` environment variable
+  - Binds to `0.0.0.0:8050` (matches `.replit` port mapping for external port 80)
+  - Debug mode disabled for performance and stability
+  - Suitable for published apps with health checks
+- **Development (Replit Workspace)**: Detected via `REPL_ID` environment variable
+  - Binds to `0.0.0.0:5000` (Replit's standard webview port)
+  - Debug mode enabled for live reloading and error details
+  - Accessible via `.replit.dev` development URL
+- **Local Development**: Default when no Replit environment variables present
+  - Binds to `127.0.0.1:5000` (localhost)
+  - Debug mode enabled for development
+
+**Port Configuration**
+- Development uses port 5000 for Replit webview compatibility
+- Deployment uses port 8050 as configured in `.replit` file (external port 80)
+- Automatic port selection based on environment ensures seamless transitions between development and production
+
 ## External Dependencies
 
 ### Python Libraries
