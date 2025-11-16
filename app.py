@@ -453,19 +453,28 @@ def update_stats_column_width(stats_content):
 if __name__ == '__main__':
     import os
     
-    # Detect if running on Replit
-    is_replit = os.getenv('REPL_ID') is not None or os.path.exists('/root/.replit')
+    # Detect environment
+    is_deployed = os.getenv('REPLIT_DEPLOYMENT') == '1'
+    is_replit = os.getenv('REPL_ID') is not None
     
-    if is_replit:
-        # Replit: bind to 0.0.0.0 so it's accessible via Replit's proxy
+    if is_deployed:
+        # Production deployment: use port 8050 (matches .replit config), no debug
+        host = '0.0.0.0'
+        port = 8050
+        debug = False
+        print("🚀 Running in production deployment - binding to 0.0.0.0:8050")
+    elif is_replit:
+        # Replit development: use port 5000 for webview, with debug
         host = '0.0.0.0'
         port = 5000
-        print("🚀 Running on Replit - binding to 0.0.0.0:5000")
+        debug = True
+        print("🚀 Running on Replit development - binding to 0.0.0.0:5000")
     else:
         # Local development
         host = '127.0.0.1'
         port = 5000
+        debug = True
         print("🚀 Starting Elite 100 Visualizer Dash App")
         print("📱 Open your browser to: http://127.0.0.1:5000")
     
-    app.run(debug=True, host=host, port=port)
+    app.run(debug=debug, host=host, port=port)
