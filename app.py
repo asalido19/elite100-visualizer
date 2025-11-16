@@ -167,7 +167,7 @@ app.layout = dbc.Container([
     
     dbc.Row([
         dbc.Col([
-            dcc.Graph(id='elite-graph', style={'height': '800px'})
+            dcc.Graph(id='elite-graph', style={'height': '800px', 'width': '100%', 'overflow': 'auto'}, responsive=True)
         ])
     ]),
     
@@ -249,10 +249,13 @@ def update_visualization(selected_brands, selected_drivetrain, selected_engine, 
         char_width = 0.08
         max_brand_width = max(brand_max_text_width.values()) * char_width if brand_max_text_width else 0
         
-        # Calculate responsive width based on number of brands
+        # Calculate responsive width: limit to 95% of common desktop width (1920px)
+        # This allows for horizontal scrolling while respecting viewport constraints
         num_brands = len(brand_order_simple)
-        # Base width: 80px per brand + 400px for margins/legend
-        responsive_width = max(900, num_brands * 100 + 400)
+        # Base calculation: 100px per brand + 500px for margins/legend + text width
+        content_width = num_brands * 100 + 500 + (max_brand_width * 200)
+        # Cap at reasonable maximum (1600px) to fit most desktop viewports
+        responsive_width = min(1600, max(900, content_width))
     else:
         brand_order_simple = []
         max_brand_width = 0
@@ -378,6 +381,7 @@ def update_visualization(selected_brands, selected_drivetrain, selected_engine, 
         title='',
         height=800,
         width=responsive_width,
+        autosize=False,
         margin=dict(l=60, r=30, t=20, b=160),
         hovermode='closest',
         plot_bgcolor='rgb(50,50,50)',
