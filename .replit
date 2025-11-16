@@ -46,3 +46,6 @@ outputType = "webview"
 
 [agent]
 expertMode = true
+
+[deployment]
+deploymentTarget = "cloudrun"
