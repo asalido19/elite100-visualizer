@@ -418,7 +418,8 @@ def update_visualization(selected_brands, selected_drivetrain, selected_engine, 
             tickvals=list(range(len(brand_order_simple))),
             ticktext=brand_order_simple,
             tickangle=45,
-            range=[-0.5, x_max]
+            range=[-0.5, x_max],
+            fixedrange=True
         )
     
     fig_simple.update_layout(
