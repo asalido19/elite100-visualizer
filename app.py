@@ -167,11 +167,11 @@ app.layout = dbc.Container([
     
     dbc.Row([
         dbc.Col([
-            dcc.Graph(id='elite-graph', style={'height': '800px', 'width': '100%', 'overflow': 'auto'}, responsive=True)
-        ])
-    ]),
+            dcc.Graph(id='elite-graph', style={'height': '100%', 'width': '100%', 'overflow': 'auto'}, responsive=True)
+        ], style={'display': 'flex', 'flexDirection': 'column', 'flex': '1'})
+    ], style={'flex': '1', 'display': 'flex', 'flexDirection': 'column', 'overflow': 'hidden'}),
     
-], fluid=True, className="bg-dark text-white", style={'backgroundColor': '#111'})
+], fluid=True, className="bg-dark text-white", style={'backgroundColor': '#111', 'display': 'flex', 'flexDirection': 'column', 'height': '100vh', 'overflow': 'hidden'})
 
 # ============================================================================
 # Callbacks for Dropdown "All" Selection Management
