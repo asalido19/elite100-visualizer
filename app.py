@@ -83,7 +83,7 @@ all_engine_types = sorted(df_plot['EngineType'].unique().tolist())
 # Dash App Setup
 # ============================================================================
 
-app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
+app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY], title='Elite 100 Visualizer')
 
 app.layout = dbc.Container([
     dbc.Row([
