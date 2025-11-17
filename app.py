@@ -174,6 +174,50 @@ app.layout = dbc.Container([
 ], fluid=True, className="bg-dark text-white", style={'backgroundColor': '#111'})
 
 # ============================================================================
+# Callbacks for Dropdown "All" Selection Management
+# ============================================================================
+
+@callback(
+    Output('brand-dropdown', 'value'),
+    Input('brand-dropdown', 'value')
+)
+def update_brand_dropdown(selected_brands):
+    """Remove 'ALL' from selection when specific brands are selected"""
+    if selected_brands is None:
+        return 'ALL'
+    if isinstance(selected_brands, list):
+        # If 'ALL' is selected with other items, remove 'ALL'
+        if len(selected_brands) > 1 and 'ALL' in selected_brands:
+            return [b for b in selected_brands if b != 'ALL']
+        # If only 'ALL' is selected, keep it
+        if selected_brands == ['ALL']:
+            return 'ALL'
+        # If nothing selected, default to 'ALL'
+        if len(selected_brands) == 0:
+            return 'ALL'
+    return selected_brands
+
+@callback(
+    Output('drivetrain-dropdown', 'value'),
+    Input('drivetrain-dropdown', 'value')
+)
+def update_drivetrain_dropdown(selected_drivetrain):
+    """Remove 'ALL' from selection when specific drivetrains are selected"""
+    if selected_drivetrain is None:
+        return 'ALL'
+    if isinstance(selected_drivetrain, list):
+        # If 'ALL' is selected with other items, remove 'ALL'
+        if len(selected_drivetrain) > 1 and 'ALL' in selected_drivetrain:
+            return [d for d in selected_drivetrain if d != 'ALL']
+        # If only 'ALL' is selected, keep it
+        if selected_drivetrain == ['ALL']:
+            return 'ALL'
+        # If nothing selected, default to 'ALL'
+        if len(selected_drivetrain) == 0:
+            return 'ALL'
+    return selected_drivetrain
+
+# ============================================================================
 # Callback for Dynamic Filtering and Visualization
 # ============================================================================
 
